@@ -1,21 +1,21 @@
 import java.util.*;
 
-// Implementation of a Graph data structure using adjacency list representation with LinkedList
+// Implementation of an undirected graph data structure using adjacency list representation with HashSet
 
-public class Graph
+public class UndirectedGraph
 {
     private int V;
     private int E;
-    private LinkedList<Integer>[] adjList;
+    private HashSet<Integer>[] adjList;
 
-    public Graph(int V)
+    public UndirectedGraph(int V)
     {
         this.V = V;
         E = 0;
-        adjList = (LinkedList<Integer>[]) new LinkedList[V];
+        adjList = (HashSet<Integer>[]) new HashSet[V];
 
         for (int i = 0; i < V; ++i)
-            adjList[i] = new LinkedList<Integer>();
+            adjList[i] = new HashSet<Integer>();
     }
 
     public int V() { return V; }
