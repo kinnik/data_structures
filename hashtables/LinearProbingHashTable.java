@@ -1,3 +1,8 @@
+/*
+ Hash Table implementation using the Linear Probing algorithm.
+ Closely follows the http://algs4.cs.princeton.edu/34hash/LinearProbingHashST.java.html taught as part of the Algorithms course on Coursera.
+*/
+
 public class LinearProbingHashTable<Key, Value>
 {
     private static final int DEFAULT_CAPACITY = 10;
@@ -15,7 +20,7 @@ public class LinearProbingHashTable<Key, Value>
           keys =   (Key[]) new Object[capacity];
         values = (Value[]) new Object[capacity];
 
-        count = 0;
+         count = 0;
     }
 
     public LinearProbingHashTable()
@@ -121,6 +126,10 @@ public class LinearProbingHashTable<Key, Value>
         capacity = temp.capacity;
     }
 
+    // In Java, % may return negative.
+    // Math.abs() returns a negative result for the largest negative number.
+    // For example, s.hashCode() is -2^31 for the Java String value "polygenelubricants"
+    // We mark the sign bit (to turn the 32-bit number into a 31-bit non-negative integer) and then compute the remainder when dividing by M, as in modular hashing.
     private int calculateHashCode(Key k)
     {
         return (k.hashCode() & 0x7fffffff) % capacity;
