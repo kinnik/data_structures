@@ -33,7 +33,6 @@ public class SeparateChainingHashTable<Key, Value>
     if (value == null)
     {
       delete(key);
-      --count;
       return;
     }
 
@@ -47,8 +46,7 @@ public class SeparateChainingHashTable<Key, Value>
     }
     else
     {
-      boolean deleted = delete(key);  // if it exists already, delete it
-      if (deleted) --count;
+      delete(key);  // if it exists already, it will be deleted
     }
 
     chains[hashCode].add(new Node<Key, Value>(key, value));
